@@ -1,0 +1,27 @@
+<div class="contribution-wrapper">
+    <div class="month-labels">
+      <div class="month-label" *ngFor="let label of monthLabels" 
+           [style.gridColumnStart]="monthPositions[monthLabels.indexOf(label)] + 2">
+        {{ label }}
+      </div>
+    </div>
+  
+    <div class="graph">
+      <div class="day-labels">
+        <div class="day-label" *ngFor="let day of dayLabels">{{ day }}</div>
+      </div>
+  
+      <div class="weeks">
+        <div class="week" *ngFor="let week of contributions">
+          <div
+            class="day"
+            *ngFor="let day of week"
+            [ngStyle]="{ 'background-color': getColor(day.count) }"
+            [attr.title]="day.date + ': ' + day.count + ' contributions'"
+            [style.animationDelay]="day.delay + 'ms'"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
